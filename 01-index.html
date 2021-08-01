@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+    <head>
+        <!-- react  -->
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <!-- react-dom  -->
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <!-- babel-loader  -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">  // JS안에서 HTML 태그 사용 가능하게
+            // const e = React.createElement;
+            
+            class LikeButton extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        liked: false,
+
+                    };
+                }
+
+                render() { 
+                    return <button type="submit" onClick={() => {this.setState({ liked: true})}}>
+                        {this.state.liked === true ? 'Liked' : 'Like'}
+                        </button>;
+                        // JSX (JS + XML (닫는 괄호 필수. 엄격하다.) ). 태그 형식으로 작성 가능. 보기가 편하다.
+
+                    /*
+                    e(
+                        'button', 
+                        {onClick: () => {this.setState({ liked: true})}, type: 'submit'}, 
+                        this.state.liked === true ? 'Liked' : 'Like', 
+                    );
+                    */   
+                    // <button>Like</button>
+                    
+
+                }
+            }
+        </script> 
+
+        <script type="text/babel">
+            //ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+            ReactDOM.render(<div><LikeButton /><LikeButton /></div>, document.querySelector('#root'));
+        </script>
+        
+    </body>
+</html>
